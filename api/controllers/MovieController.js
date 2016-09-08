@@ -7,12 +7,12 @@
 
 var Client = require('node-rest-client').Client;
 var client = new Client();
-var endpoint = "http://localhost:1337/employee"
+var endpoint = "http://localhost:1337/movies"
 
 module.exports = {
 
   /**
-   * `EmployeeController.create()`
+   * `MovieController.create()`
    */
   create: function (req, res) {
         
@@ -39,21 +39,21 @@ module.exports = {
 
 
   /**
-   * `EmployeeController.read()`
+   * `MovieController.read()`
    */
   read: function (req, res) {
 
     client.get(endpoint, function (data, response) {
-        return res.view('read', {employees: data});
+        return res.view('read', {movies: data});
     }).on('error', function (err) {
-        return res.view('read', {error: { message: "There was an error getting the employees"}});
+        return res.view('read', {error: { message: "There was an error getting the records"}});
     });
 
   },
 
 
   /**
-   * `EmployeeController.update()`
+   * `MovieController.update()`
    */
   update: function (req, res) {
     return res.json({
@@ -63,7 +63,7 @@ module.exports = {
 
 
   /**
-   * `EmployeeController.delete()`
+   * `MovieController.delete()`
    */
   delete: function (req, res) {
     return res.json({
