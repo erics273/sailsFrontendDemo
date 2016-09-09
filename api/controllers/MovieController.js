@@ -35,7 +35,7 @@ module.exports = {
             {
                 return res.view('create', {error:{message: response.statusMessage + ": " + data.reason}});
             }
-
+            
             return res.view('create', {success:{message: "Record created successfully"}});
 
         })
@@ -86,14 +86,14 @@ module.exports = {
             data: req.body,
             headers: { "Content-Type": "application/json" }
         };
-         //this actually deletes
+         //this actually updates
         client.put(modifiedEndpoint, args, function (data, response) {
             //return res.view('create', {success: { message: "Record edited successfully"}});
             if(response.statusCode != "200"){
                 return res.view('update', {error:{message: response.statusMessage + ": " + data.reason}});
             }
             return res.redirect('back');
-            //return res.view('update', {success:{message: "Record edited successfully"}});
+            return res.view('update', {success:{message: "Record edited successfully"}});
 
         })
         }
@@ -115,13 +115,20 @@ module.exports = {
    */
   delete: function (req, res)  {
 
+     
       var values = req.allParams();
       var modifiedEndpoint = "http://localhost:1337/movies/" + values.id;
-       //this calls the data you need to delete 
+       
+       //this calls the data you need to delete and populates the table
         if(req.method != "POST"){
-          return res.view('delete');}
+          client.get(endpoint, function (data, response) {
+            return res.view('delete', {movies: data});
+          }).on('error', function (err) {
+            return res.view('delete', {error: { message: "There was an error getting the records"}});
+          });
 
-        var args = {
+        }else{
+          var args = {
             data: req.body,
             headers: { "Content-Type": "application/json" }
         };
@@ -131,12 +138,12 @@ module.exports = {
             if(response.statusCode != "200"){
                 return res.view('delete', {error:{message: response.statusMessage + ": " + data.reason}});
             }
-
+            return res.redirect('back');
             return res.view('delete', {success:{message: "Record deleted successfully"}});
 
         })
       }
- 
+ }
   };
 
 
