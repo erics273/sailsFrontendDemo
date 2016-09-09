@@ -39,7 +39,6 @@ module.exports = {
             return res.view('create', {success:{message: "Record created successfully"}});
 
         })
- 
   },
 
 
@@ -73,11 +72,17 @@ module.exports = {
 
       var values = req.allParams();
       var modifiedEndpoint = "http://localhost:1337/movies/" + values.id;
+       
        //this calls the data you need to update
         if(req.method != "POST"){
-          return res.view('update');}
-          
-        var args = {
+          client.get(endpoint, function (data, response) {
+            return res.view('update', {movies: data});
+          }).on('error', function (err) {
+            return res.view('update', {error: { message: "There was an error getting the records"}});
+          });
+
+        }else{
+          var args = {
             data: req.body,
             headers: { "Content-Type": "application/json" }
         };
@@ -87,10 +92,13 @@ module.exports = {
             if(response.statusCode != "200"){
                 return res.view('update', {error:{message: response.statusMessage + ": " + data.reason}});
             }
-
-            return res.view('update', {success:{message: "Record edited successfully"}});
+            return res.redirect('back');
+            //return res.view('update', {success:{message: "Record edited successfully"}});
 
         })
+        }
+          
+        
       },
 
 
