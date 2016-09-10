@@ -25,14 +25,13 @@ var create = {
                     },
                     password:{
                       required: true,
-                      pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+                      pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^\&*\)\(+=._-])[0-9a-zA-Z!@#\$%\^\&*\)\(+=._-]{8,}$/
                     },
                 },
                 messages: {
-                    firstname: "Please enter your First Name",
-                    lastName: "Please enter your Last Name",
-                    password: "Please provide a valid password",
-                    email: "Please enter a valid email address",
+                    password: {
+                        pattern: "Please provide a valid password"
+                    }
                 },
                 errorClass: "text-danger",
             }
