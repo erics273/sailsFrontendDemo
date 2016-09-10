@@ -5,8 +5,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Employee Admin</title>
-         <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.12/datatables.min.css"/>
+
+        <!--STYLES-->
+        <link rel="stylesheet" href="/styles/bootstrap-theme.css">
+        <link rel="stylesheet" href="/styles/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="/styles/bootstrap.css">
+        <link rel="stylesheet" href="/styles/bootstrap.min.css">
+        <link rel="stylesheet" href="/styles/importer.css">
+        <!--STYLES END-->
+
         <style>
             body {
                 padding-top: 70px;
@@ -14,16 +23,17 @@
             /* Customize container */
             @media (min-width: 768px) {
                 .container {
-                    max-width: 730px;
+                    max-width: 1024px;
                 }
             }
             /* Customize container */
             @media (min-width: 1024px) {
                 .container-fluid {
-                    max-width: 1000px;
+                    max-width: 1280px;
                 }
             }
         </style>
+        
     </head>
     <body>
 
@@ -36,7 +46,18 @@
         </div>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.12/datatables.min.js"></script>
+        <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+        <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.js"></script>
+
+        <!--SCRIPTS-->
+        <script src="/js/dependencies/sails.io.js"></script>
+        <script src="/js/bootstrap.js"></script>
+        <script src="/js/read.js"></script>
+        <script src="/js/create.js"></script>
+        <script src="/js/main.js"></script>
+        <!--SCRIPTS END-->
+
     </body>
 </html>

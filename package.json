@@ -22,7 +22,8 @@
     "node-rest-client": "^2.0.1",
     "rc": "1.0.1",
     "sails": "~0.12.4",
-    "sails-disk": "~0.10.9"
+    "sails-disk": "~0.10.9",
+    "sails-hook-flash": "^0.2.1"
   },
   "scripts": {
     "debug": "node debug app.js",

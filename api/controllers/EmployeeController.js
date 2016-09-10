@@ -28,10 +28,13 @@ module.exports = {
         client.post(endpoint, args, function (data, response) {
             // return res.view('create', {success: { message: "Record added successfully"}});
             if(response.statusCode != "201"){
-                return res.view('create', {error:{message: response.statusMessage + ": " + data.reason}});
+                sails.log.debug(data);
+                req.addFlash("error", data.message.substring(data.message.indexOf("•")));
+                return res.redirect('/create');
             }
 
-            return res.view('create', {success:{message: "Record created successfully"}});
+            req.addFlash("success", "Record created successfully");
+            return res.redirect('/create');
 
         })
  
