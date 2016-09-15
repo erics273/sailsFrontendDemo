@@ -17,6 +17,8 @@
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
+  'js/jquery-ui-1.12.0/*.min.css',
+  '../node_modules/bootstrap/dist/css/*.min.css',
   'styles/**/*.css'
 ];
 
@@ -33,11 +35,9 @@ var jsFilesToInject = [
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-  //'js/**/*.js'
-  'js/bootstrap.js',
-  'js/read.js',
-  'js/create.js',
-  'js/main.js'
+  'js/jquery-ui-1.12.0/*.min.js',
+  '../node_modules/bootstrap/dist/js/*.min.js',
+  'js/**/*.js'
 ];
 
 
