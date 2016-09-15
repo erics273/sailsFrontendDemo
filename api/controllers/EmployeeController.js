@@ -54,23 +54,64 @@ module.exports = {
   },
 
 
-  /**
+   /**
    * `EmployeeController.update()`
    */
   update: function (req, res) {
-    return res.json({
-      todo: 'update() is not implemented yet!'
-    });
-  },
 
+    if(req.method != "POST"){
+
+      client.get(endpoint, function (data, response) {
+        return res.view('update', {employees: data});
+      }).on('error', function (err) {
+          return res.view('update', {error: { message: "There was an error getting the employees"}});
+      });
+
+    }else{
+     
+      client.delete(endpoint + "/" + req.body.employeeId, function (data, response) {
+        // return res.view('create', {success: { message: "Record added successfully"}});
+        if(response.statusCode != "200"){
+            req.addFlash("error", data.message);
+            return res.redirect('/update');
+        }
+
+        req.addFlash("success", "Record updated successfully");
+        return res.redirect('/update');
+
+      })
+    }
+  },
 
   /**
    * `EmployeeController.delete()`
    */
   delete: function (req, res) {
-    return res.json({
-      todo: 'delete() is not implemented yet!'
-    });
+    
+    if(req.method != "POST"){
+
+      client.get(endpoint, function (data, response) {
+        return res.view('delete', {employees: data});
+      }).on('error', function (err) {
+          return res.view('delete', {error: { message: "There was an error getting the employees"}});
+      });
+
+    }else{
+     
+      client.delete(endpoint + "/" + req.body.employeeId, function (data, response) {
+        // return res.view('create', {success: { message: "Record added successfully"}});
+        if(response.statusCode != "204"){
+            req.addFlash("error", data.message);
+            return res.redirect('/delete');
+        }
+
+        req.addFlash("success", "Record deleted successfully");
+        return res.redirect('/delete');
+
+      })
+    }
+ 
   }
+  
 };
 

@@ -16,10 +16,9 @@
       <select id="employeeId" name="employeeId">
       <% if(typeof employees != "undefined" && employees.length > 0){ %>
         <% employees.forEach(function(employee){ %>
-          <option value="<%= employee.employeeId %>" data-subtext="<%=employee.email%>">
+          <option value="<%= employee.employeeId %>">
             <%= employee.lastName + ", " +  employee.firstName %>
           </option>
-          <option data-divider="true"></option>
         <% }) %>
       <% } %>  
       </select>
