@@ -1,0 +1,36 @@
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li class="active">Delete Employee</a></li>
+</ol>
+
+<br/>
+
+<%- partial ('partials/statusmessage.ejs') %>
+
+<h2>Delete Employee</h2>
+
+<div style="text-align: center; padding-top:50px">
+  <form action="/delete" method="POST">
+    <div class="form-group">
+      <label for="employeeId">SELECT AN EMPLOYEE TO DELETE</label><br/>
+      <select id="employeeId" name="employeeId">
+      <% if(typeof employees != "undefined" && employees.length > 0){ %>
+        <% employees.forEach(function(employee){ %>
+          <option value="<%= employee.employeeId %>" data-subtext="<%=employee.email%>">
+            <%= employee.lastName + ", " +  employee.firstName %>
+          </option>
+          <option data-divider="true"></option>
+        <% }) %>
+      <% } %>  
+      </select>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-danger">
+        DELETE EMPLOYEE
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </button>
+    </div>
+  </form>
+</div>
+
+
