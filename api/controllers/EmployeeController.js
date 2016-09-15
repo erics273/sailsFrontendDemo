@@ -68,9 +68,14 @@ module.exports = {
       });
 
     }else{
-     
-      client.delete(endpoint + "/" + req.body.employeeId, function (data, response) {
-        // return res.view('create', {success: { message: "Record added successfully"}});
+
+      var args = {
+          data: req.body,
+          headers: { "Content-Type": "application/json" }
+      };
+
+      client.put(endpoint + "/" + req.body.id, args, function (data, response) {
+        
         if(response.statusCode != "200"){
             req.addFlash("error", data.message);
             return res.redirect('/update');
@@ -80,6 +85,7 @@ module.exports = {
         return res.redirect('/update');
 
       })
+
     }
   },
 
@@ -98,8 +104,8 @@ module.exports = {
 
     }else{
      
-      client.delete(endpoint + "/" + req.body.employeeId, function (data, response) {
-        // return res.view('create', {success: { message: "Record added successfully"}});
+      client.delete(endpoint + "/" + req.body.id, function (data, response) {
+        
         if(response.statusCode != "204"){
             req.addFlash("error", data.message);
             return res.redirect('/delete');

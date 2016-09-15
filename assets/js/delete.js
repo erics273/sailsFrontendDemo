@@ -20,7 +20,7 @@
  * 
  * 7. Add a menu header to the dropdown
  *
- * 3. Customize further with anything you find intersting
+ * 8. Customize further with anything you find intersting
  *
  * Here's the documentation you need:
  * https://silviomoreto.github.io/bootstrap-select/

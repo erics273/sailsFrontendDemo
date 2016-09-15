@@ -20,10 +20,7 @@
  *
  * 6. The table should be able to scroll horizontal
  * 
- * 2. Use any other features you find interesting
- *
- * 3. Any time a team shoots and scores change the background color of
- *    page to that teams color
+ * 7. Use any other features you find interesting
  *
  * Here's the documentation you need:
  * https://datatables.net/

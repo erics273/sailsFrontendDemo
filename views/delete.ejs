@@ -13,10 +13,10 @@
   <form action="/delete" method="POST">
     <div class="form-group">
       <label for="employeeId">SELECT AN EMPLOYEE TO DELETE</label><br/>
-      <select id="employeeId" name="employeeId">
+      <select id="id" name="id">
       <% if(typeof employees != "undefined" && employees.length > 0){ %>
         <% employees.forEach(function(employee){ %>
-          <option value="<%= employee.employeeId %>">
+          <option value="<%= employee.id %>">
             <%= employee.lastName + ", " +  employee.firstName %>
           </option>
         <% }) %>
